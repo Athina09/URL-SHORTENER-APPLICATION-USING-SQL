@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Short link not found</title>
+    <style>
+        body { font-family: system-ui, sans-serif; max-width: 500px; margin: 3rem auto; padding: 0 1rem; text-align: center; }
+        h1 { color: #c00; font-size: 1.5rem; }
+        p { color: #555; }
+        code { background: #f0f0f0; padding: 0.2em 0.4em; border-radius: 4px; }
+        a { color: #0066cc; }
+    </style>
+</head>
+<body>
+    <h1>Short link not found</h1>
+    <p>There is no shortened URL for <code>{{ short_url }}</code>.</p>
+    <p>If you typed <code>&lt;short_code&gt;</code>, that’s a placeholder. Use a real short code from the home page (e.g. <code>aB3xY9</code>) after shortening a URL.</p>
+    <p><a href="{% url 'home' %}">← Back to URL Shortener</a></p>
+</body>
+</html>

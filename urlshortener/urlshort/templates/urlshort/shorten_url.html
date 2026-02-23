@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shorten a URL</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: system-ui, sans-serif; max-width: 500px; margin: 2rem auto; padding: 0 1rem; }
+        h1 { color: #333; }
+        label { display: block; margin-top: 1rem; color: #555; }
+        input[type="url"] { width: 100%; padding: 0.5rem; margin: 0.5rem 0; border: 1px solid #ccc; border-radius: 4px; }
+        input[type="submit"] { padding: 0.5rem 1rem; background: #0066cc; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 0.5rem; }
+        input[type="submit"]:hover { background: #0052a3; }
+        a { color: #0066cc; }
+    </style>
+</head>
+<body>
+    <h1>Shorten a URL</h1>
+    <form method="post" action="{% url 'shorten_url' %}">
+        {% csrf_token %}
+        <label for="long_url">Enter a long URL:</label>
+        <input type="url" id="long_url" name="long_url" placeholder="https://example.com/..." required>
+        <input type="submit" value="Shorten">
+    </form>
+    <p style="margin-top: 1.5rem;"><a href="{% url 'home' %}">← Back to home</a></p>
+</body>
+</html>
