@@ -2,15 +2,18 @@
 Django settings for urlshortener project.
 """
 
+import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-url-shortener-expt2-change-in-production'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-url-shortener-expt2-change-in-production')
 
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', 'True').lower() in ('1', 'true', 'yes')
 
-ALLOWED_HOSTS = ['*']
+# Allow host header from any host when DEBUG; in production set ALLOWED_HOSTS env (comma-separated)
+_ALLOWED = os.environ.get('ALLOWED_HOSTS', '')
+ALLOWED_HOSTS = [h.strip() for h in _ALLOWED.split(',') if h.strip()] if _ALLOWED else ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
